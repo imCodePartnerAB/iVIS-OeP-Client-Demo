@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Config>
+    <Encoding>UTF-8</Encoding>
+    <StyleSheets>
+        <StyleSheet language="Swedish" default="true" name="default (xsl/design.xsl)" fullMenu="true">xsl/design.xsl</StyleSheet>
+    </StyleSheets>
+    <SystemXMLDebug>false</SystemXMLDebug>
+    <SystemXMLDebugFile>system_xmldebug.xml</SystemXMLDebugFile>
+    <ModuleXMLDebug>false</ModuleXMLDebug>
+    <ModuleXMLDebugFile>module_xmldebug.xml</ModuleXMLDebugFile>
+    <BackgroundModuleXMLDebug>false</BackgroundModuleXMLDebug>
+    <BackgroundModuleXMLDebugFile>bgmodule_xmldebug.xml</BackgroundModuleXMLDebugFile>
+    <CoreDAOFactory>se.unlogic.hierarchy.core.daos.implementations.mysql.MySQLCoreDAOFactory</CoreDAOFactory>
+    <DataSource>
+        <Url>@jdbc-url@</Url>
+        <Type>SystemManaged</Type>
+        <Driver>@jdbc-driver@</Driver>
+        <Username>@db-user@</Username>
+        <Password>@db-pass@</Password>
+        <LogAbandoned>false</LogAbandoned>
+        <RemoveAbandoned>false</RemoveAbandoned>
+        <RemoveAbandonedTimeout>30</RemoveAbandonedTimeout>
+        <TestOnBorrow>false</TestOnBorrow>
+        <ValidationQuery>SELECT 1</ValidationQuery>
+        <MaxActive>@db-max-active@</MaxActive>
+        <MaxIdle>@db-max-idle@</MaxIdle>
+        <MinIdle>0</MinIdle>
+        <MaxWait>0</MaxWait>
+    </DataSource>
+    <DefaultLanguage>Swedish</DefaultLanguage>
+</Config>

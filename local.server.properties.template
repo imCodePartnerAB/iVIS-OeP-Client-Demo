@@ -1,0 +1,10 @@
+JdbcDriver = com.mysql.jdbc.Driver
+JdbcUrl = jdbc:mysql://localhost:3306/db_open_platform?characterEncoding=utf8
+
+User = root
+Password = 415263
+
+MaxActive = 10
+MaxIdle = 5
+
+LogFile = /home/ruslan/IdeaProject/logs/oep.log

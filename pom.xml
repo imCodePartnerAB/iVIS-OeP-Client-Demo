@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.imcode.ivis.application</groupId>
+    <artifactId>oep-ivis-client-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.nordicpeak</groupId>
+            <artifactId>oep-ivis</artifactId>
+            <version>1.0.0-alpha1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.nordicpeak</groupId>
+            <artifactId>oep-ivis</artifactId>
+            <version>1.0.0-alpha1-SNAPSHOT</version>
+            <classifier>classes</classifier>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>oepivis</finalName>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${project.basedir}/local.server.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <include>target/${build.finalName}/WEB-INF/config.xml</include>
+                        <include>target/${build.finalName}/WEB-INF/log4j.xml</include>
+                    </includes>
+                    <replacements>
+                        <replacement>
+                            <token>@jdbc-driver@</token>
+                            <value>${JdbcDriver}</value>
+                        </replacement>
+                        <replacement>
+                            <token>@jdbc-url@</token>
+                            <value>${JdbcUrl}</value>
+                        </replacement>
+                        <replacement>
+                            <token>@db-user@</token>
+                            <value>${User}</value>
+                        </replacement>
+                        <replacement>
+                            <token>@db-pass@</token>
+                            <value>${Password}</value>
+                        </replacement>
+                        <replacement>
+                            <token>@db-max-active@</token>
+                            <value>${MaxActive}</value>
+                        </replacement>
+                        <replacement>
+                            <token>@db-max-idle@</token>
+                            <value>${MaxIdle}</value>
+                        </replacement>
+                        <replacement>
+                            <token>@log-file@</token>
+                            <value>${LogFile}</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>imcode</id>
+            <url>http://repo.imcode.com/maven2</url>
+            <snapshots>
+                <checksumPolicy>warn</checksumPolicy>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>imcode</id>
+            <url>http://repo.imcode.com/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>central</id>
+            <url>http://repo1.maven.org/maven2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
+
