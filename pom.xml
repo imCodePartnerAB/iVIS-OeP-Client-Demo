@@ -63,8 +63,8 @@
                 </executions>
                 <configuration>
                     <includes>
-                        <include>target/${build.finalName}/WEB-INF/config.xml</include>
-                        <include>target/${build.finalName}/WEB-INF/log4j.xml</include>
+                        <include>target/${project.build.finalName}/WEB-INF/config.xml</include>
+                        <include>target/${project.build.finalName}/WEB-INF/log4j.xml</include>
                     </includes>
                     <replacements>
                         <replacement>
